@@ -1,0 +1,30 @@
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    font-family: arial, sans-serif;
+    color: #181810;
+    background-color: #fdfdfc;
+}
+
+body {
+    margin: 12px;
+}
+
+h1 {
+    font-size: 150%;
+}
+
+button {
+    font-size: 16px;
+    font-family: arial, sans-serif;
+    margin: 0.5ex 2ex;
+}
+
+.separate {
+    margin-top: 2ex;
+}
