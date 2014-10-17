@@ -1,6 +1,11 @@
 'use strict';
 
 
+var asHex = function(x) {
+  return Math.floor(x * 255.99 + 256).toString(16).slice(1);
+};
+
+
 var extractMaterialDefinitions = function(text) {
   var current = null;
   var definitions = {};
@@ -12,7 +17,7 @@ var extractMaterialDefinitions = function(text) {
         current = fields[1];
       } else if (fields[0] == 'Kd') {
         var rgb = fields.slice(1).map(function(s) {
-          return Math.floor(parseFloat(s) * 255.99).toString(16);
+          return asHex(parseFloat(s.replace(/,/, '.')));
         }).join('');
 
         definitions[current] = 'k'+rgb.toUpperCase();
@@ -36,7 +41,7 @@ module.exports = function(mtlFileContents, objFileContents) {
       } else if (fields[0] == 'usemtl') {
         return 'g '+materials[fields[1]];
       } else
-        return line;
+        return line.replace(/,/g, '.');
     })
     .join('\n');
 };
